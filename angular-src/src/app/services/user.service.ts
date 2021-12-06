@@ -41,16 +41,7 @@ export class UserService {
   }
 
   logOutUser() {
-    this.updateInventoryAndMoney().subscribe((res:any)=>{
-      this.authToken = null
-      this.user = null
-      localStorage.clear()
-    }, (err)=>{
-      console.log(err)
-      this.authToken = null;
-      this.user = null
-      localStorage.clear()
-    })
+    //action needed here?
   }
 
   getProfile(): Observable<any> {
@@ -60,29 +51,6 @@ export class UserService {
       'Content-Type': 'application/json'
     });
     return this.http.get('http://localhost:4100/users/profile', {headers: headers})
-  }
-
-  getInventory(): Observable<any> {
-    this.loadToken();
-    let headers = new HttpHeaders({
-      'Authorization': `Bearer ${this.authToken}`,
-      'Content-Type': 'application/json'
-    });
-    return this.http.get(`http://localhost:4100/inventoryItems/all/${this.user._id}`, {headers: headers})
-  }
-
-
-  addNewItem(): Observable<any> {
-    return this.http.post('http://localhost:4100/inventoryItems/addNew', this.user)
-  }
-
-  updateInventoryAndMoney() {
-    this.loadToken();
-    let headers = new HttpHeaders({
-      'Authorization': `Bearer ${this.authToken}`,
-      'Content-Type': 'application/json'
-    });
-    return this.http.post('http://localhost:4100/users/updateInventoryAndMoney', this.user, {headers: headers}, )
   }
   
   loadToken() {
