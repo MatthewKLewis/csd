@@ -1,6 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { ProductionService } from '../services/production.service';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { DialogFrameComponent } from '../dialog-frame/dialog-frame.component';
 
 @Component({
   selector: 'app-raw-materials',
@@ -15,31 +16,16 @@ export class RawMaterialsComponent implements OnInit {
   }
 
   addRawMaterial() {
-    const dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
+    const dialogRef = this.dialog.open(DialogFrameComponent, {
       width: '50%',
-      data: {msg: 'hello'},
+      data: {frame: 'add-raw-material'},
     });
     dialogRef.afterClosed().subscribe((res:any) => {
-      console.log('The dialog was closed');
+      if (res) {
+        console.log(res);
+      } else {
+        console.log('The dialog was closed with no data returned.');
+      }
     });
-  }
-}
-
-
-/* ------------------------------ */
-
-
-@Component({
-  selector: 'dialog-overview-example-dialog',
-  template: '<div>Hello</div>',
-})
-export class DialogOverviewExampleDialog {
-  constructor(
-    public dialogRef: MatDialogRef<DialogOverviewExampleDialog>,
-    @Inject(MAT_DIALOG_DATA) public data: any,
-  ) {}
-
-  onNoClick(): void {
-    this.dialogRef.close();
   }
 }
