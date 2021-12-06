@@ -6,12 +6,12 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { HomeComponent } from './home/home.component';
-import { ProfileComponent } from './profile/profile.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AuthGuard } from './guards/auth.guard';
 
-import {DragDropModule} from '@angular/cdk/drag-drop'; 
+import {DragDropModule} from '@angular/cdk/drag-drop';
+import { RawMaterialsComponent } from './raw-materials/raw-materials.component'; 
 
 @NgModule({
   declarations: [
@@ -20,7 +20,7 @@ import {DragDropModule} from '@angular/cdk/drag-drop';
     LoginComponent,
     RegisterComponent,
     HomeComponent,
-    ProfileComponent,
+    RawMaterialsComponent,
   ],
   imports: [
     BrowserModule,
