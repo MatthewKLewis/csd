@@ -1,6 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { ProductionService } from '../services/production.service';
-import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA, MAT_DIALOG_DEFAULT_OPTIONS} from '@angular/material/dialog';
 import { DialogFrameComponent } from '../dialog-frame/dialog-frame.component';
 
 @Component({
@@ -18,6 +18,7 @@ export class RawMaterialsComponent implements OnInit {
   addRawMaterial() {
     const dialogRef = this.dialog.open(DialogFrameComponent, {
       width: '50%',
+      height: '50%',
       data: {frame: 'add-raw-material'},
     });
     dialogRef.afterClosed().subscribe((res:any) => {
