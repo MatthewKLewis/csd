@@ -33,10 +33,11 @@ interface FinalItem {
 export class ProductionService {
 
   rawMaterials: Array<RawMaterial> = [];
-  componentItems: Array<ComponentItem> = [];
+  componentMaterials: Array<ComponentItem> = [];
   finalItems: Array<FinalItem> = [];
 
   constructor(private http: HttpClient, private userService: UserService) {
+    console.log('constructing production service.')
     this.rawMaterials.push(
       {
         id: -1,

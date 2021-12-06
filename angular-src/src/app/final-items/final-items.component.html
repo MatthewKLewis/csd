@@ -1,12 +1,11 @@
 <div class="wrapper">
     <div class="raw-materials">
-        <div class="raw-material" *ngFor="let rawMaterial of productionService.rawMaterials">
+        <div class="raw-material" *ngFor="let rawMaterial of productionService.finalItems">
             <article>{{rawMaterial.id}}</article>
             <article>{{rawMaterial.name}}</article>
-            <article>{{rawMaterial.level}}</article>
         </div>
         <div class="raw-material">
-            <button (click)="addRawMaterial()">Add Raw Material</button>
+            
         </div>
     </div>
 </div>

@@ -49,7 +49,7 @@ export class LoginComponent implements OnInit {
     this.userService.logInUser(this.loginForm.value).subscribe((res:any)=>{
       if (res.success) {
         this.userService.storeUserData(res.token, res.user)
-        this.router.navigate(['profile'])
+        this.router.navigate(['raw-materials'])
       } else {
         this.flashMessage(res.msg)
       }

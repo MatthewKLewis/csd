@@ -11,7 +11,12 @@ import { HttpClientModule } from '@angular/common/http';
 import { AuthGuard } from './guards/auth.guard';
 
 import {DragDropModule} from '@angular/cdk/drag-drop';
-import { RawMaterialsComponent } from './raw-materials/raw-materials.component'; 
+import {MatDialogModule} from '@angular/material/dialog'; 
+import { RawMaterialsComponent } from './raw-materials/raw-materials.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ComponentMaterialsComponent } from './component-materials/component-materials.component';
+import { FinalItemsComponent } from './final-items/final-items.component';
+import { NetworkViewComponent } from './network-view/network-view.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +26,9 @@ import { RawMaterialsComponent } from './raw-materials/raw-materials.component';
     RegisterComponent,
     HomeComponent,
     RawMaterialsComponent,
+    ComponentMaterialsComponent,
+    FinalItemsComponent,
+    NetworkViewComponent,
   ],
   imports: [
     BrowserModule,
@@ -28,7 +36,9 @@ import { RawMaterialsComponent } from './raw-materials/raw-materials.component';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    DragDropModule
+    DragDropModule,
+    BrowserAnimationsModule,
+    MatDialogModule,
   ],
   providers: [AuthGuard],
   bootstrap: [AppComponent]
