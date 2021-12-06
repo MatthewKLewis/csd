@@ -10,15 +10,15 @@ const ComponentItem = require('../models/componentItem.model')
 const User = require('../models/user.model')
 
 //CREATE
-router.post('/addNew', (req, res, next)=>{
-    console.log(req.params.id)
-
+router.post('/addRawMaterial', (req, res, next)=>{
+    console.log(req.body);
+    res.send({msg: 'ok'});
 })
 
 //READ
 router.get('/all/:id', passport.authenticate('jwt', {session:false}), (req, res, next)=>{
-    console.log(req.params.id)
-
+    console.log(req.body);
+    res.send({msg: 'ok'});
 })
 
 //UPDATE

@@ -24,14 +24,14 @@ export class UserService {
     let headers = new HttpHeaders();
     headers.append('Content-Type', 'application/json');
     return this.http
-      .post('http://localhost:4100/users/register', user, { headers: headers })
+      .post('http://localhost:4100/user/register', user, { headers: headers })
   }
 
   logInUser(user: any) {
     let headers = new HttpHeaders();
     headers.append('Content-Type', 'application/json');
     return this.http
-      .post('http://localhost:4100/users/authenticate', {username: user.username, password: user.password}, { headers: headers })
+      .post('http://localhost:4100/user/authenticate', {username: user.username, password: user.password}, { headers: headers })
   }
 
   checkExpired() {
@@ -41,7 +41,9 @@ export class UserService {
   }
 
   logOutUser() {
-    //action needed here?
+      this.authToken = null
+      this.user = null
+      localStorage.clear()
   }
 
   getProfile(): Observable<any> {
@@ -50,7 +52,7 @@ export class UserService {
       'Authorization': `Bearer ${this.authToken}`,
       'Content-Type': 'application/json'
     });
-    return this.http.get('http://localhost:4100/users/profile', {headers: headers})
+    return this.http.get('http://localhost:4100/user/profile', {headers: headers})
   }
   
   loadToken() {

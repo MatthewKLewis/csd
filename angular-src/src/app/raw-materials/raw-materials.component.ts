@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ProductionService } from '../services/production.service';
 
 @Component({
   selector: 'app-raw-materials',
@@ -7,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RawMaterialsComponent implements OnInit {
 
-  constructor() { }
+  constructor(public productionService: ProductionService) { }
 
   ngOnInit(): void {
+  }
+
+  addRawMaterial() {
+    this.productionService.addRawMaterial().subscribe((res:any)=>{
+      console.log(res);
+    })
   }
 
 }

@@ -1,5 +1,9 @@
 <button *ngIf="userService.checkExpired()" [routerLink]="['/']">home </button>
 <button *ngIf="!userService.checkExpired()" [routerLink]="['raw-materials']">raw materials </button>
+<button *ngIf="!userService.checkExpired()" [routerLink]="['raw-materials']">component materials </button>
+<button *ngIf="!userService.checkExpired()" [routerLink]="['raw-materials']">final items </button>
+<button *ngIf="!userService.checkExpired()" [routerLink]="['raw-materials']">network view </button>
+
 <button *ngIf="userService.checkExpired()" [routerLink]="['register']">create account </button>
 
 <button *ngIf="userService.checkExpired()" class="float-right" [routerLink]="['login']">login </button>

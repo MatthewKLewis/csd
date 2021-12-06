@@ -1,0 +1,14 @@
+.wrapper {
+    margin: 5%;
+}
+
+.raw-materials {
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+
+    .raw-material {
+        width: 100px;
+        height: 100px;
+        border: 1px solid black;
+    }
+}
