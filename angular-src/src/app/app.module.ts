@@ -18,6 +18,7 @@ import { ComponentMaterialsComponent } from './component-materials/component-mat
 import { FinalItemsComponent } from './final-items/final-items.component';
 import { NetworkViewComponent } from './network-view/network-view.component';
 import { DialogFrameComponent } from './dialog-frame/dialog-frame.component';
+import { AddRawMaterialComponent } from './dialog-frame/add-raw-material/add-raw-material.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { DialogFrameComponent } from './dialog-frame/dialog-frame.component';
     FinalItemsComponent,
     NetworkViewComponent,
     DialogFrameComponent,
+    AddRawMaterialComponent,
   ],
   imports: [
     BrowserModule,
