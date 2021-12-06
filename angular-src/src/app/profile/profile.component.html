@@ -1,0 +1,39 @@
+<div class="user-grid" *ngIf="showAll">
+  <div class="grid-el">
+    <p>User: {{ userService.user.username }}</p>
+    <p>E-mail: {{ userService.user.email }}</p>
+    <p>Credits: {{ userService.user.money }}</p>
+    <hr />
+    <!-- INVENTORY -->
+    <p>Inventory:</p>
+    <div class="inventory-grid">
+      <div class="inventory-tile" *ngFor="let item of inventory">
+        <b>{{item.name}} </b>
+        <p>{{item.rarity}} {{item.type}}</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- BUYING -->
+  <div class="shop-list grid-el">
+    <button
+      *ngFor="let item of shopInventory; let index = index"
+      [disabled]="item.price > userService.user.money"
+      (click)="buy(item.name)"
+    >
+      <img class="shop-icon" src="#" />
+      <div class="details">
+        <p>${{ item.price.toLocaleString() }}</p>
+        <p>Buy {{ item.name }}</p>
+      </div>
+    </button>
+  </div>
+
+  <!-- CRAFTING -->
+  <div class="crafting-bench-grid grid-el">
+      X
+  </div>
+
+  <!-- CREDITS? -->
+  <div class="grid-el">Last</div>
+</div>
