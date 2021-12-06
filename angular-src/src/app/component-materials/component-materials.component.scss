@@ -1,0 +1,14 @@
+.wrapper {
+    //margin: 5%;
+}
+
+.component-materials {
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+
+    .component-material {
+        width: 100px;
+        height: 100px;
+        border: 1px solid black;
+    }
+}

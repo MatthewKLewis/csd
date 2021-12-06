@@ -8,24 +8,22 @@ interface Blueprint {
   name: String,
   recipe: Array<any>
 }
-
 interface RawMaterial {
   id: Number,
   name: String,
   level: Number,
 }
-
-interface ComponentItem {
+interface ComponentMaterial {
   id: Number,
   name: String,
   blueprint: Blueprint
 }
-
 interface FinalItem {
   id: Number,
   name: String,
   blueprint: Blueprint
 }
+
 
 @Injectable({
   providedIn: 'root'
@@ -33,7 +31,7 @@ interface FinalItem {
 export class ProductionService {
 
   rawMaterials: Array<RawMaterial> = [];
-  componentMaterials: Array<ComponentItem> = [];
+  componentMaterials: Array<ComponentMaterial> = [];
   finalItems: Array<FinalItem> = [];
 
   constructor(private http: HttpClient, private userService: UserService) {
@@ -43,6 +41,33 @@ export class ProductionService {
         id: -1,
         name: 'Copper Ore',
         level: 1 
+      },
+      {
+        id: -4,
+        name: 'Lignite Coal',
+        level: 1 
+      },
+    )
+    this.componentMaterials.push(
+      {
+        id: -2,
+        name: 'Copper Bar',
+        blueprint: {
+          id: -1,
+          name: 'Copper Bar Recipe',
+          recipe: []
+        }
+      }
+    )
+    this.finalItems.push(
+      {
+        id: -3,
+        name: 'Copper Shield',
+        blueprint: {
+          id: -1,
+          name: 'Copper Bar Recipe',
+          recipe: []
+        }
       }
     )
   }

@@ -1,0 +1,14 @@
+.wrapper {
+    //margin: 5%;
+}
+
+.final-items {
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+
+    .final-item {
+        width: 100px;
+        height: 100px;
+        border: 1px solid black;
+    }
+}
