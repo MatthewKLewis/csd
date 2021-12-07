@@ -1,5 +1,5 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { ProductionService } from '../services/production.service';
+import { ProductionService, RawMaterial } from '../services/production.service';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA, MAT_DIALOG_DEFAULT_OPTIONS} from '@angular/material/dialog';
 import { DialogFrameComponent } from '../dialog-frame/dialog-frame.component';
 
@@ -10,12 +10,14 @@ import { DialogFrameComponent } from '../dialog-frame/dialog-frame.component';
 })
 export class RawMaterialsComponent implements OnInit {
 
+  rawMaterials: Array<RawMaterial> = [];
+
   constructor(public productionService: ProductionService, public dialog: MatDialog) {
   }
 
   ngOnInit(): void {
-    this.productionService.getRawMaterials().subscribe((res:any)=>{
-      console.log(res);
+    this.productionService.rawMaterial$.subscribe((rawMaterials)=>{
+      this.rawMaterials = rawMaterials;
     })
   }
 
@@ -27,9 +29,8 @@ export class RawMaterialsComponent implements OnInit {
     });
     dialogRef.afterClosed().subscribe((res:any) => {
       if (res) {
-        console.log(res);
         this.productionService.addRawMaterial(res).subscribe((res)=>{
-          console.log(res);
+          this.productionService.getRawMaterials();
         })
       } else {
         console.log('The dialog was closed with no data returned.');

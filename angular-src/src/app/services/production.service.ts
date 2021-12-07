@@ -1,9 +1,9 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { UserService } from './user.service';
 
-interface Blueprint {
+export interface Blueprint {
   id: Number,
   name: String,
   level: Number,
@@ -11,19 +11,19 @@ interface Blueprint {
   discipline: String,
   description?: String
 }
-interface RawMaterial {
+export interface RawMaterial {
   id: Number,
   name: String,
   level: Number,
   description?: String
 }
-interface ComponentMaterial {
+export interface ComponentMaterial {
   id: Number,
   name: String,
   blueprint: Blueprint,
   description?: String
 }
-interface FinalItem {
+export interface FinalItem {
   id: Number,
   name: String,
   blueprint: Blueprint,
@@ -35,7 +35,7 @@ interface FinalItem {
 })
 export class ProductionService {
 
-  rawMaterials: Array<RawMaterial> = [];
+  rawMaterial$ = new BehaviorSubject([]);
   componentMaterials: Array<ComponentMaterial> = [];
   finalItems: Array<FinalItem> = [];
 
@@ -44,6 +44,8 @@ export class ProductionService {
     if (this.userService.user == null) {
       this.userService.retrieveUserData();
     }
+
+    this.getRawMaterials();
     
     this.componentMaterials.push(
       {
@@ -78,7 +80,9 @@ export class ProductionService {
       'Authorization': `Bearer ${this.userService.authToken}`,
       'Content-Type': 'application/json'
     });
-    return this.http.get(`http://localhost:4100/production/all/${this.userService.user.id}`, {headers: headers})
+    this.http.get(`http://localhost:4100/production/all/${this.userService.user.id}`, {headers: headers}).subscribe((res:any)=>{
+      this.rawMaterial$.next(res.list);
+    })
   }
 
   addRawMaterial(rawMaterial: RawMaterial): Observable<any> {
