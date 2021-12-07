@@ -24,6 +24,9 @@ export class RawMaterialsComponent implements OnInit {
     dialogRef.afterClosed().subscribe((res:any) => {
       if (res) {
         console.log(res);
+        this.productionService.addRawMaterial(res).subscribe((res)=>{
+          console.log(res);
+        })
       } else {
         console.log('The dialog was closed with no data returned.');
       }

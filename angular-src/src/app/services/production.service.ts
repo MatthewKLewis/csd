@@ -6,24 +6,29 @@ import { UserService } from './user.service';
 interface Blueprint {
   id: Number,
   name: String,
-  recipe: Array<any>
+  level: Number,
+  recipe: Array<any>,
+  discipline: String,
+  description?: String
 }
 interface RawMaterial {
   id: Number,
   name: String,
   level: Number,
+  description?: String
 }
 interface ComponentMaterial {
   id: Number,
   name: String,
-  blueprint: Blueprint
+  blueprint: Blueprint,
+  description?: String
 }
 interface FinalItem {
   id: Number,
   name: String,
-  blueprint: Blueprint
+  blueprint: Blueprint,
+  description?: String
 }
-
 
 @Injectable({
   providedIn: 'root'
@@ -40,12 +45,12 @@ export class ProductionService {
       {
         id: -1,
         name: 'Copper Ore',
-        level: 1 
+        level: 1 ,
       },
       {
         id: -4,
         name: 'Lignite Coal',
-        level: 1 
+        level: 1,
       },
     )
     this.componentMaterials.push(
@@ -54,9 +59,11 @@ export class ProductionService {
         name: 'Copper Bar',
         blueprint: {
           id: -1,
+          level: 1,
           name: 'Copper Bar Recipe',
-          recipe: []
-        }
+          recipe: [],
+          discipline: 'Mining'
+        },
       }
     )
     this.finalItems.push(
@@ -65,18 +72,20 @@ export class ProductionService {
         name: 'Copper Shield',
         blueprint: {
           id: -1,
-          name: 'Copper Bar Recipe',
-          recipe: []
-        }
+          level: 1,
+          name: 'Copper Shield Recipe',
+          recipe: [],
+          discipline: 'Shieldcrafting'
+        },
       }
     )
   }
 
-  addRawMaterial(): Observable<any> {
+  addRawMaterial(rawMaterial: RawMaterial): Observable<any> {
     let headers = new HttpHeaders({
       'Authorization': `Bearer ${this.userService.authToken}`,
       'Content-Type': 'application/json'
     });
-    return this.http.post('http://localhost:4100/production/addRawMaterial', {msg: 'hello'}, {headers: headers})
+    return this.http.post('http://localhost:4100/production/addRawMaterial', {mat: rawMaterial}, {headers: headers})
   }
 }

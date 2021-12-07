@@ -20,7 +20,7 @@ export class AddRawMaterialComponent implements OnInit {
     this.addRawMaterialForm = this.fb.group({
       name: ['', [Validators.required]],
       level: [0, [Validators.required]],
-      discipline: ['', [Validators.required]],
+      description: ['',],
     });
   }
 
