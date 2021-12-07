@@ -2,6 +2,8 @@
     <div *ngIf="data.frame == 'add-raw-material'">
         <app-add-raw-material [data]="data"></app-add-raw-material>
     </div>
-    <div *ngIf="data.frame == 'add-component-material'">Add Component Material</div>
+    <div *ngIf="data.frame == 'add-component-material'">
+        <app-add-component-material [data]="data"></app-add-component-material>
+    </div>
     <div *ngIf="data.frame == 'add-final-item'">Add Final Item</div>
 </div>
