@@ -18,7 +18,9 @@ router.post('/addRawMaterial', (req, res, next)=>{
         level: req.body.mat.level,
         owner: req.body.id,
     })
-    newRawMaterial.save();
+    newRawMaterial.save().then((mat)=>{
+        res.json({success: true, mat: mat})
+    });
 })
 
 //READ

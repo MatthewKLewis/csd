@@ -13,24 +13,22 @@ export class RawMaterialsComponent implements OnInit {
   rawMaterials: Array<RawMaterial> = [];
 
   constructor(public productionService: ProductionService, public dialog: MatDialog) {
-  }
-
-  ngOnInit(): void {
-    this.productionService.rawMaterial$.subscribe((rawMaterials)=>{
-      this.rawMaterials = rawMaterials;
+    productionService.getRawMaterials().subscribe((res:any)=>{
+      this.rawMaterials = res.list;
     })
   }
+
+  ngOnInit(): void {  }
 
   addRawMaterial() {
     const dialogRef = this.dialog.open(DialogFrameComponent, {
       width: '50%',
-      height: '50%',
       data: {frame: 'add-raw-material'},
     });
     dialogRef.afterClosed().subscribe((res:any) => {
       if (res) {
-        this.productionService.addRawMaterial(res).subscribe((res)=>{
-          this.productionService.getRawMaterials();
+        this.productionService.addRawMaterial(res).subscribe((res:any)=>{
+          location.reload()
         })
       } else {
         console.log('The dialog was closed with no data returned.');

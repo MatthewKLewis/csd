@@ -35,7 +35,7 @@ export interface FinalItem {
 })
 export class ProductionService {
 
-  rawMaterial$ = new BehaviorSubject([]);
+  rawMaterials = [];
   componentMaterials: Array<ComponentMaterial> = [];
   finalItems: Array<FinalItem> = [];
 
@@ -80,9 +80,7 @@ export class ProductionService {
       'Authorization': `Bearer ${this.userService.authToken}`,
       'Content-Type': 'application/json'
     });
-    this.http.get(`http://localhost:4100/production/all/${this.userService.user.id}`, {headers: headers}).subscribe((res:any)=>{
-      this.rawMaterial$.next(res.list);
-    })
+    return this.http.get(`http://localhost:4100/production/all/${this.userService.user.id}`, {headers: headers})
   }
 
   addRawMaterial(rawMaterial: RawMaterial): Observable<any> {
