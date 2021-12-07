@@ -4,11 +4,13 @@
 
 .raw-materials {
     display: grid;
-    grid-template-columns: auto auto auto auto;
+    
+grid-template-columns: repeat(8, auto);
 
     .raw-material {
         width: 100px;
         height: 100px;
+        margin-bottom: 10px;
         border: 1px solid black;
     }
 }
