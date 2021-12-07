@@ -81,11 +81,19 @@ export class ProductionService {
     )
   }
 
+  getRawMaterials() {
+    let headers = new HttpHeaders({
+      'Authorization': `Bearer ${this.userService.authToken}`,
+      'Content-Type': 'application/json'
+    });
+    return this.http.get(`http://localhost:4100/production/all/${this.userService.user.id}`, {headers: headers})
+  }
+
   addRawMaterial(rawMaterial: RawMaterial): Observable<any> {
     let headers = new HttpHeaders({
       'Authorization': `Bearer ${this.userService.authToken}`,
       'Content-Type': 'application/json'
     });
-    return this.http.post('http://localhost:4100/production/addRawMaterial', {mat: rawMaterial}, {headers: headers})
+    return this.http.post(`http://localhost:4100/production/addRawMaterial`, {mat: rawMaterial, id: this.userService.user.id}, {headers: headers})
   }
 }

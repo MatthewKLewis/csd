@@ -11,14 +11,24 @@ const User = require('../models/user.model')
 
 //CREATE
 router.post('/addRawMaterial', (req, res, next)=>{
-    console.log(req.body);
-    res.send({msg: 'ok'});
+    //console.log(req.body);
+    let newRawMaterial = new RawMaterial({
+        createdOn: Date.now(),
+        name: req.body.mat.name,
+        level: req.body.mat.level,
+        owner: req.body.id,
+    })
+    newRawMaterial.save();
 })
 
 //READ
 router.get('/all/:id', passport.authenticate('jwt', {session:false}), (req, res, next)=>{
-    console.log(req.body);
-    res.send({msg: 'ok'});
+    //console.log(req.params);
+    RawMaterial.find({owner: req.params.id}).then((rawMaterials)=>{
+        res.json({success: true, list: rawMaterials})
+    }).catch((err)=>{
+        res.json({success: false, msg: err})
+    })
 })
 
 //UPDATE
