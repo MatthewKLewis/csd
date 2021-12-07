@@ -12,8 +12,12 @@ import { AuthGuard } from './guards/auth.guard';
 
 import {DragDropModule} from '@angular/cdk/drag-drop';
 import {MatDialogModule} from '@angular/material/dialog'; 
-import { RawMaterialsComponent } from './raw-materials/raw-materials.component';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatSelectModule} from '@angular/material/select';
+import {MatInputModule} from '@angular/material/input';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+import { RawMaterialsComponent } from './raw-materials/raw-materials.component';
 import { ComponentMaterialsComponent } from './component-materials/component-materials.component';
 import { FinalItemsComponent } from './final-items/final-items.component';
 import { NetworkViewComponent } from './network-view/network-view.component';
@@ -43,6 +47,9 @@ import { AddRawMaterialComponent } from './dialog-frame/add-raw-material/add-raw
     DragDropModule,
     BrowserAnimationsModule,
     MatDialogModule,
+    MatFormFieldModule,
+    MatSelectModule,
+    MatInputModule,
   ],
   providers: [AuthGuard],
   bootstrap: [AppComponent]
