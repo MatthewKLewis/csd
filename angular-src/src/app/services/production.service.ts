@@ -40,19 +40,11 @@ export class ProductionService {
   finalItems: Array<FinalItem> = [];
 
   constructor(private http: HttpClient, private userService: UserService) {
-    console.log('constructing production service.')
-    this.rawMaterials.push(
-      {
-        id: -1,
-        name: 'Copper Ore',
-        level: 1 ,
-      },
-      {
-        id: -4,
-        name: 'Lignite Coal',
-        level: 1,
-      },
-    )
+    
+    if (this.userService.user == null) {
+      this.userService.retrieveUserData();
+    }
+    
     this.componentMaterials.push(
       {
         id: -2,

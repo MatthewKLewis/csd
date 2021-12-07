@@ -45,10 +45,9 @@ export class LoginComponent implements OnInit {
   get username() {    return this.loginForm.get('username');  }
   get password() {    return this.loginForm.get('password');  }
 
-  onSubmit() {
+  logIn() {
     this.userService.logInUser(this.loginForm.value).subscribe((res:any)=>{
       if (res.success) {
-        console.log('storing user data.')
         this.userService.storeUserData(res.token, res.user)
         this.router.navigate(['raw-materials'])
       } else {

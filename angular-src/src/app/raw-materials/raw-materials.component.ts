@@ -10,11 +10,11 @@ import { DialogFrameComponent } from '../dialog-frame/dialog-frame.component';
 })
 export class RawMaterialsComponent implements OnInit {
 
-  constructor(public productionService: ProductionService, public dialog: MatDialog) { }
+  constructor(public productionService: ProductionService, public dialog: MatDialog) {
+  }
 
   ngOnInit(): void {
     this.productionService.getRawMaterials().subscribe((res:any)=>{
-      console.log('GET ALL!');
       console.log(res);
     })
   }

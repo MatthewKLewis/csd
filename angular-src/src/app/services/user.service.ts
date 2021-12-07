@@ -10,14 +10,20 @@ export class UserService {
   authToken: any;
   user: any;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) {
+    this.retrieveUserData();
+  }
 
   storeUserData(token:any, user:any) {
-    console.log('saving to local storage...')
     localStorage.setItem('id_token', token)
     localStorage.setItem('user', JSON.stringify(user))
     this.authToken = token;
     this.user = user
+  }
+
+  retrieveUserData() {
+    let userData = JSON.parse(<string>localStorage.getItem('user'));
+    this.user = userData;
   }
 
   registerUser(user: any) {
