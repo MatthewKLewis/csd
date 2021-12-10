@@ -66,4 +66,8 @@ export class AddComponentMaterialComponent implements OnInit {
     this.blueprint.recipe[i].count = event.value;
   }
 
+  close() {
+    this.dialogRef.close();
+  }
+
 }

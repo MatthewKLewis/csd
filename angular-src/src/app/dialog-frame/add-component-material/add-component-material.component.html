@@ -1,4 +1,7 @@
-<p>{{data.frame}}</p>
+<div class="title">
+    <p>{{data.frame}}</p>
+    <p (click)="close()">❌</p>
+</div>
 <form class="form" [formGroup]="addComponentMaterialForm">
     <mat-form-field appearance="fill">
         <mat-label>Name</mat-label>
