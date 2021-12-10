@@ -20,7 +20,7 @@ export class AddComponentMaterialComponent implements OnInit {
   addComponentMaterialForm: FormGroup;  
 
   blueprint: Blueprint = {
-    id: 0,
+    _id: 0,
     name: '',
     level: 0,
     recipe: [],

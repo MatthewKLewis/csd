@@ -52,9 +52,9 @@ export class RawMaterialsComponent implements OnInit {
     });
   }
 
-  delete() {
+  delete(id: number) {
     this.openDialogAndCallback('confirm', {}, (returnData: any) => {
-      this.productionService.deleteRawMaterial(returnData).subscribe((res: any) => {
+      this.productionService.deleteRawMaterial(id).subscribe((res: any) => {
         location.reload()
       })
     });

@@ -4,7 +4,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { UserService } from './user.service';
 
 export interface Blueprint {
-  id: Number,
+  _id: Number,
   name: String,
   level: Number,
   recipe: Array<any>,
@@ -12,22 +12,22 @@ export interface Blueprint {
   description?: String
 }
 export interface RawMaterial {
-  id: Number,
-  name: String,
-  level: Number,
-  description?: String
+  _id: number,
+  name: string,
+  level: number,
+  description?: string
 }
 export interface ComponentMaterial {
-  id: Number,
-  name: String,
+  _id: number,
+  name: string,
   blueprint: Blueprint,
-  description?: String
+  description?: string
 }
 export interface FinalItem {
-  id: Number,
-  name: String,
+  _id: number,
+  name: string,
   blueprint: Blueprint,
-  description?: String
+  description?: string
 }
 
 @Injectable({
@@ -49,10 +49,10 @@ export class ProductionService {
     
     this.componentMaterials.push(
       {
-        id: -2,
+        _id: -2,
         name: 'Copper Bar',
         blueprint: {
-          id: -1,
+          _id: -1,
           level: 1,
           name: 'Copper Bar Recipe',
           recipe: [],
@@ -62,10 +62,10 @@ export class ProductionService {
     )
     this.finalItems.push(
       {
-        id: -3,
+        _id: -3,
         name: 'Copper Shield',
         blueprint: {
-          id: -1,
+          _id: -1,
           level: 1,
           name: 'Copper Shield Recipe',
           recipe: [],
@@ -99,11 +99,11 @@ export class ProductionService {
     return this.http.post(`http://localhost:4100/production/editRawMaterial`, {mat: rawMaterial, id: this.userService.user.id}, {headers: headers})
   }
 
-  deleteRawMaterial(rawMaterial: RawMaterial): Observable<any> {
+  deleteRawMaterial(rawMaterialId: number): Observable<any> {
     let headers = new HttpHeaders({
       'Authorization': `Bearer ${this.userService.authToken}`,
       'Content-Type': 'application/json'
     });
-    return this.http.post(`http://localhost:4100/production/deleteRawMaterial`, {mat: rawMaterial, id: this.userService.user.id}, {headers: headers})
+    return this.http.delete(`http://localhost:4100/production/deleteRawMaterial/${rawMaterialId}`, {headers: headers})
   }
 }
