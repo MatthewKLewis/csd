@@ -18,6 +18,7 @@ export class ComponentMaterialsComponent implements OnInit {
   addComponentMaterial() {
     const dialogRef = this.dialog.open(DialogFrameComponent, {
       width: '50%',
+      disableClose: true,
       data: {frame: 'add-component-material'},
     });
     dialogRef.afterClosed().subscribe((res:any) => {

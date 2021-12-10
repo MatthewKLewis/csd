@@ -90,4 +90,20 @@ export class ProductionService {
     });
     return this.http.post(`http://localhost:4100/production/addRawMaterial`, {mat: rawMaterial, id: this.userService.user.id}, {headers: headers})
   }
+
+  editRawMaterial(rawMaterial: RawMaterial): Observable<any> {
+    let headers = new HttpHeaders({
+      'Authorization': `Bearer ${this.userService.authToken}`,
+      'Content-Type': 'application/json'
+    });
+    return this.http.post(`http://localhost:4100/production/editRawMaterial`, {mat: rawMaterial, id: this.userService.user.id}, {headers: headers})
+  }
+
+  deleteRawMaterial(rawMaterial: RawMaterial): Observable<any> {
+    let headers = new HttpHeaders({
+      'Authorization': `Bearer ${this.userService.authToken}`,
+      'Content-Type': 'application/json'
+    });
+    return this.http.post(`http://localhost:4100/production/deleteRawMaterial`, {mat: rawMaterial, id: this.userService.user.id}, {headers: headers})
+  }
 }

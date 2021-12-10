@@ -1,11 +1,18 @@
 <div class="wrapper">
     <div class="raw-materials">
+
         <div class="raw-material" *ngFor="let rawMaterial of rawMaterials">
-            <article>{{rawMaterial.name}}</article>
-            <article>{{rawMaterial.id}}</article>
-            <article>{{rawMaterial.level}}</article>
+            <p>{{rawMaterial.name}}</p>
+            <span>{{rawMaterial.id}}</span>
+            <span>lvl. {{rawMaterial.level}}</span>
+            <hr>
+            <div class="button-row">
+                <button class="chip-button" (click)="edit(rawMaterial)">Edit</button>
+                <button class="chip-button" (click)="delete()">Delete</button>
+            </div>
         </div>
-        <div class="raw-material">
+
+        <div class="raw-material bkg-green">
             <button (click)="addRawMaterial()">Add Raw Material</button>
         </div>
     </div>

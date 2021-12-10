@@ -25,6 +25,7 @@ import { NetworkViewComponent } from './network-view/network-view.component';
 import { DialogFrameComponent } from './dialog-frame/dialog-frame.component';
 import { AddRawMaterialComponent } from './dialog-frame/add-raw-material/add-raw-material.component';
 import { AddComponentMaterialComponent } from './dialog-frame/add-component-material/add-component-material.component';
+import { ConfirmComponent } from './dialog-frame/confirm/confirm.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +41,7 @@ import { AddComponentMaterialComponent } from './dialog-frame/add-component-mate
     DialogFrameComponent,
     AddRawMaterialComponent,
     AddComponentMaterialComponent,
+    ConfirmComponent,
   ],
   imports: [
     BrowserModule,

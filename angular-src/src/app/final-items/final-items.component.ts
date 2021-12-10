@@ -18,6 +18,7 @@ export class FinalItemsComponent implements OnInit {
   addFinalItem() {
     const dialogRef = this.dialog.open(DialogFrameComponent, {
       width: '50%',
+      disableClose: true,
       data: {frame: 'add-final-item'},
     });
     dialogRef.afterClosed().subscribe((res:any) => {

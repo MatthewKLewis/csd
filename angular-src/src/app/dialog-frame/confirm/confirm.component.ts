@@ -4,13 +4,12 @@ import { MatDialogRef } from '@angular/material/dialog';
 import { DialogFrameComponent } from '../dialog-frame.component';
 
 @Component({
-  selector: 'app-add-raw-material',
-  templateUrl: './add-raw-material.component.html',
-  styleUrls: ['./add-raw-material.component.scss']
+  selector: 'app-confirm',
+  templateUrl: './confirm.component.html',
+  styleUrls: ['./confirm.component.scss']
 })
-export class AddRawMaterialComponent implements OnInit {
+export class ConfirmComponent implements OnInit {
 
-  @Input() public data: any
   addRawMaterialForm: FormGroup;
 
   constructor(
