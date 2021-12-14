@@ -7,12 +7,12 @@
 
     <div *ngIf="chosenItem">
         <p> {{chosenItem.name}} </p>
-        <p> {{chosenItem.level}} </p>
         <p> {{chosenItem.description || 'no desc.'}} </p>
-        <p> Number of Raw Materials: {{chosenItemRawMats.length}} </p>
+        <p> lvl. {{chosenItem.level}} </p>
         <hr>
         <div>
             <p>{{chosenItem.blueprint.name}}</p>
+            <p> Number of Raw Materials: {{chosenItemRawMats.length}} </p>
             <div *ngFor="let component of chosenItem.blueprint.recipe">
                 <div>
                     <div class="col-1" *ngFor="let in of counter(component.count)">
@@ -23,7 +23,6 @@
                             </div>
                         </div>
                     </div>
-                    
                 </div>
             </div>
         </div>
