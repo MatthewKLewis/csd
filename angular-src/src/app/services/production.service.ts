@@ -20,6 +20,7 @@ export interface RawMaterial {
 export interface ComponentMaterial {
   _id: number,
   name: string,
+  level?: number,
   blueprint: Blueprint,
   description?: string
 }
@@ -80,7 +81,15 @@ export class ProductionService {
       'Authorization': `Bearer ${this.userService.authToken}`,
       'Content-Type': 'application/json'
     });
-    return this.http.get(`http://localhost:4100/production/all/${this.userService.user.id}`, {headers: headers})
+    return this.http.get(`http://localhost:4100/production/allRaw/${this.userService.user.id}`, {headers: headers})
+  }
+
+  getComponentMaterials() {
+    let headers = new HttpHeaders({
+      'Authorization': `Bearer ${this.userService.authToken}`,
+      'Content-Type': 'application/json'
+    });
+    return this.http.get(`http://localhost:4100/production/allComponent/${this.userService.user.id}`, {headers: headers})
   }
 
   addRawMaterial(rawMaterial: RawMaterial): Observable<any> {
@@ -89,6 +98,13 @@ export class ProductionService {
       'Content-Type': 'application/json'
     });
     return this.http.post(`http://localhost:4100/production/addRawMaterial`, {mat: rawMaterial, id: this.userService.user.id}, {headers: headers})
+  }
+  addComponentMaterial(componentItem: ComponentMaterial) {
+    let headers = new HttpHeaders({
+      'Authorization': `Bearer ${this.userService.authToken}`,
+      'Content-Type': 'application/json'
+    });
+    return this.http.post(`http://localhost:4100/production/addComponentMaterial`, {mat: componentItem, id: this.userService.user.id}, {headers: headers})
   }
 
   editRawMaterial(rawMaterial: RawMaterial): Observable<any> {

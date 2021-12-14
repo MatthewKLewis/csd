@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogFrameComponent } from '../dialog-frame/dialog-frame.component';
-import { ProductionService } from '../services/production.service';
+import { ComponentMaterial, ProductionService } from '../services/production.service';
 
 @Component({
   selector: 'app-component-materials',
@@ -10,7 +10,13 @@ import { ProductionService } from '../services/production.service';
 })
 export class ComponentMaterialsComponent implements OnInit {
 
-  constructor(public productionService: ProductionService, public dialog: MatDialog) { }
+  componentMaterials: Array<ComponentMaterial> = [];
+
+  constructor(public productionService: ProductionService, public dialog: MatDialog) { 
+    productionService.getComponentMaterials().subscribe((res: any) => {
+      this.componentMaterials = res.list;
+    })
+  }
 
   ngOnInit(): void {
   }
@@ -24,9 +30,16 @@ export class ComponentMaterialsComponent implements OnInit {
     dialogRef.afterClosed().subscribe((res:any) => {
       if (res) {
         console.log(res);
+        this.productionService.addComponentMaterial(res).subscribe((res:any)=>{
+          location.reload();
+        })
       } else {
         console.log('The dialog was closed with no data returned.');
       }
     });
   }
+
+  edit(any:any) {}
+
+  delete(any:any) {}
 }

@@ -47,19 +47,21 @@ export class AddComponentMaterialComponent implements OnInit {
   }
 
   submitForm() {
+    this.blueprint.name = this.addComponentMaterialForm.value.name + " Blueprint"
     this.addComponentMaterialForm.value.blueprint = this.blueprint;
     this.dialogRef.close(this.addComponentMaterialForm.value);
   }
 
   addIngredient() {
     this.blueprint.recipe.push({
+      _id: '',
       name: '',
       count: 1,
     })
   }
 
   changeIngredientName(i: number, event: any) {
-    this.blueprint.recipe[i].name = event.option.value;
+    this.blueprint.recipe[i] = event.option.value;
   }
 
   changeIngredientCount(i: number, event: any) {

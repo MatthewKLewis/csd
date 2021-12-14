@@ -1,8 +1,21 @@
 <div class="wrapper">
     <div class="component-materials">
-        <div class="component-material" *ngFor="let rawMaterial of productionService.componentMaterials">
-            <article>{{rawMaterial._id}}</article>
-            <article>{{rawMaterial.name}}</article>
+        <div class="component-material" *ngFor="let componentMaterial of componentMaterials">
+            <span style="font-size: 10px; color: grey;">{{componentMaterial._id}}</span>
+            <b>{{componentMaterial.name}}</b>
+            <span>lvl. {{componentMaterial.level}}</span>
+
+            <div>
+                <div *ngFor="let ingred of componentMaterial.blueprint.recipe">
+                    <span>{{ingred.name}}</span> - 
+                    <span>{{ingred.count}}</span>
+                </div>
+            </div>
+
+            <div class="button-row">
+                <button class="chip-button" (click)="edit(componentMaterial)">Edit</button>
+                <button class="chip-button" (click)="delete(componentMaterial._id)">Delete</button>
+            </div>
         </div>
         <div class="component-material">
             <button (click)="addComponentMaterial()">Add Component Material</button>
