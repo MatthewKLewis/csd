@@ -29,7 +29,7 @@ export class ComponentMaterialsComponent implements OnInit {
     });
     dialogRef.afterClosed().subscribe((res:any) => {
       if (res) {
-        console.log(res);
+        //console.log(res);
         this.productionService.addComponentMaterial(res).subscribe((res:any)=>{
           location.reload();
         })
