@@ -1,8 +1,21 @@
 <div class="wrapper">
     <div class="final-items">
-        <div class="final-item" *ngFor="let rawMaterial of finalItems">
-            <article>{{rawMaterial._id}}</article>
-            <article>{{rawMaterial.name}}</article>
+        <div class="final-item" *ngFor="let finalItem of finalItems">
+            <span style="font-size: 10px; color: grey;">{{finalItem._id}}</span>
+            <b>{{finalItem.name}}</b>
+            <span>lvl. {{finalItem.level}}</span>
+
+            <div>
+                <div *ngFor="let ingred of finalItem.blueprint.recipe">
+                    <span>{{ingred.name}}</span> - 
+                    <span>{{ingred.count}}</span>
+                </div>
+            </div>
+
+            <div class="button-row">
+                <button class="chip-button" (click)="edit(finalItem)">Edit</button>
+                <button class="chip-button" (click)="delete(finalItem._id)">Delete</button>
+            </div>
         </div>
         <div class="final-item">
             <button (click)="addFinalItem()">Add Final Item</button>

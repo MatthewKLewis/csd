@@ -4,14 +4,12 @@ const bcrypt = require("bcryptjs");
 const Schema = mongoose.Schema;
 
 const finalItemSchema = new Schema({
-  name: {
-    type: String,
-    required: true,
-  },
-  price: {
-    type: Number,
-    required: true,
-  },
+  createdOn: Date,
+  name: String,
+  description: String,
+  level: Number,
+  discipline: String,
+  blueprint: Schema.Types.Mixed,
   owner: { type: Schema.Types.ObjectId, ref: "User" },
 });
 

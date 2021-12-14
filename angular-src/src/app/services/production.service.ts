@@ -27,6 +27,7 @@ export interface ComponentMaterial {
 export interface FinalItem {
   _id: number,
   name: string,
+  level?: number,
   blueprint: Blueprint,
   description?: string
 }
@@ -79,6 +80,13 @@ export class ProductionService {
       'Content-Type': 'application/json'
     });
     return this.http.post(`http://localhost:4100/production/addComponentMaterial`, {mat: componentItem, id: this.userService.user.id}, {headers: headers})
+  }
+  addFinalItem(finalItem: FinalItem) {
+    let headers = new HttpHeaders({
+      'Authorization': `Bearer ${this.userService.authToken}`,
+      'Content-Type': 'application/json'
+    });
+    return this.http.post(`http://localhost:4100/production/addFinalItem`, {mat: finalItem, id: this.userService.user.id}, {headers: headers})
   }
 
   //EDIT

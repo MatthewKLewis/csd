@@ -1,16 +1,40 @@
+hr {
+    border: none;
+    height: 1px;
+    background-color: #e0e0e0;
+}
+
 .wrapper {
     //margin: 5%;
 }
 
 .final-items {
     display: grid;
-    grid-template-columns: auto auto auto auto;
+    grid-template-columns: repeat(4, auto);
 
     .final-item {
-        width: 100px;
-        height: 100px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 160px;
+        height: 160px;
         padding: 10px;
         margin-bottom: 10px;
         border: 1px solid black;
+        background-color: #f4f4f4;
     }
+
+    .button-row {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+
+        .chip-button {
+            width: 75px;
+        }
+    }
+}
+
+.bkg-green {
+    background-color: rgb(186, 223, 186);
 }

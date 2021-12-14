@@ -29,9 +29,21 @@ export class FinalItemsComponent implements OnInit {
     dialogRef.afterClosed().subscribe((res:any) => {
       if (res) {
         console.log(res);
+        this.productionService.addFinalItem(res).subscribe((res:any)=>{
+          console.log(res);
+          location.reload();
+        })
       } else {
         console.log('The dialog was closed with no data returned.');
       }
     });
+  }
+
+  edit(any:any) {
+
+  }
+
+  delete(any:any) {
+
   }
 }
