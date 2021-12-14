@@ -37,8 +37,12 @@ export class NetworkViewComponent implements OnInit {
     }
   }
 
-  counter(i: number) {
-    return new Array(i);
+  repeater(ingred: any) {
+    let retArray: any[] = []
+    for (let index = 0; index < ingred.count; index++) {
+      retArray.push(ingred);
+    }
+    return retArray
   }
 
 }

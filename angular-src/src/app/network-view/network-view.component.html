@@ -11,17 +11,11 @@
         <p> lvl. {{chosenItem.level}} </p>
         <hr>
         <div>
-            <p>{{chosenItem.blueprint.name}}</p>
-            <p> Number of Raw Materials: {{chosenItemRawMats.length}} </p>
-            <div *ngFor="let component of chosenItem.blueprint.recipe">
-                <div>
-                    <div class="col-1" *ngFor="let in of counter(component.count)">
-                        <p>{{component.name}}</p>
-                        <div *ngFor="let rawIngred of component.blueprint.recipe">
-                            <div class="col-2" *ngFor="let in of counter(rawIngred.count)">
-                                <span>{{rawIngred.name}}</span>
-                            </div>
-                        </div>
+            <div *ngFor="let ingred of chosenItem.blueprint.recipe">
+                <div *ngFor="let iteration of repeater(ingred)">
+                    <div *ngIf="iteration.type == 'raw'">RAW</div>
+                    <div *ngIf="iteration.type == 'component'">
+                        <article>INSERT RECURSIVE ANGULAR COMPONENT HERE!</article>
                     </div>
                 </div>
             </div>
