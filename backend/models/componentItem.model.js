@@ -6,8 +6,10 @@ const Schema = mongoose.Schema;
 const componentItemSchema = new Schema({
   createdOn: Date,
   name: String,
-  discipline: String,
+  description: String,
   level: Number,
+  discipline: String,
+  blueprint: Schema.Types.Mixed,
   owner: { type: Schema.Types.ObjectId, ref: "User" },
 });
 

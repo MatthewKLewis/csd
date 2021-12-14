@@ -9,5 +9,7 @@
         <app-add-component-material [data]="data"></app-add-component-material>
     </div>
 
-    <div *ngIf="data.frame == 'add-final-item'">Add Final Item</div>
+    <div *ngIf="data.frame == 'add-final-item'">
+        <app-add-final-item [data]="data"></app-add-final-item>
+    </div>
 </div>

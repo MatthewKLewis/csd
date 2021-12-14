@@ -26,6 +26,7 @@ import { DialogFrameComponent } from './dialog-frame/dialog-frame.component';
 import { AddRawMaterialComponent } from './dialog-frame/add-raw-material/add-raw-material.component';
 import { AddComponentMaterialComponent } from './dialog-frame/add-component-material/add-component-material.component';
 import { ConfirmComponent } from './dialog-frame/confirm/confirm.component';
+import { AddFinalItemComponent } from './dialog-frame/add-final-item/add-final-item.component';
 
 @NgModule({
   declarations: [
@@ -42,6 +43,7 @@ import { ConfirmComponent } from './dialog-frame/confirm/confirm.component';
     AddRawMaterialComponent,
     AddComponentMaterialComponent,
     ConfirmComponent,
+    AddFinalItemComponent,
   ],
   imports: [
     BrowserModule,
