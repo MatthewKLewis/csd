@@ -20,7 +20,6 @@ export class AddFinalItemComponent implements OnInit {
   addFinalItemForm: FormGroup;  
 
   blueprint: Blueprint = {
-    _id: 0,
     name: '',
     level: 0,
     recipe: [],

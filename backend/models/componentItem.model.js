@@ -8,6 +8,7 @@ const componentItemSchema = new Schema({
   name: String,
   description: String,
   level: Number,
+  type: String,
   discipline: String,
   blueprint: Schema.Types.Mixed,
   owner: { type: Schema.Types.ObjectId, ref: "User" },

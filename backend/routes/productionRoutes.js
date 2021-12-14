@@ -16,7 +16,10 @@ router.post('/addRawMaterial', passport.authenticate('jwt', { session: false }),
     let newRawMaterial = new RawMaterial({
         createdOn: Date.now(),
         name: req.body.mat.name,
+        description: 'hello',
         level: req.body.mat.level,
+        type: 'raw',
+        discipline: 'mining',
         owner: req.body.id,
     })
     newRawMaterial.save().then((mat) => {
@@ -30,6 +33,8 @@ router.post('/addComponentMaterial', passport.authenticate('jwt', { session: fal
         name: req.body.mat.name,
         description: req.body.mat.description,
         level: req.body.mat.level,
+        type: 'component',
+        discipline: 'mining',
         blueprint: req.body.mat.blueprint,
         owner: req.body.id,
     })
@@ -43,7 +48,10 @@ router.post('/addFinalItem', passport.authenticate('jwt', { session: false }), (
         createdOn: Date.now(),
         name: req.body.mat.name,
         description: req.body.mat.description,
+        statBlock: "hello",
         level: req.body.mat.level,
+        type: "final",
+        discipline: 'mining',
         blueprint: req.body.mat.blueprint,
         owner: req.body.id,
     })

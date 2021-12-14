@@ -16,11 +16,11 @@ export class AddComponentMaterialComponent implements OnInit {
   numbers = [1,2,3,4,5,6,7,8,9,10]
   rawMaterials!: Array<RawMaterial>;
   componentMaterials!: Array<ComponentMaterial>;
+  allMaterials!: Array<RawMaterial | ComponentMaterial>;
 
   addComponentMaterialForm: FormGroup;  
 
   blueprint: Blueprint = {
-    _id: 0,
     name: '',
     level: 0,
     recipe: [],
@@ -33,7 +33,13 @@ export class AddComponentMaterialComponent implements OnInit {
     public dialogRef: MatDialogRef<DialogFrameComponent>,
     private fb: FormBuilder
   ) {
-    this.productionService.getRawMaterials().subscribe((res:any)=>{ this.rawMaterials = res.list })
+    this.productionService.getRawMaterials().subscribe((res:any)=>{ 
+      this.rawMaterials = res.list 
+      this.productionService.getComponentMaterials().subscribe((res:any)=>{ 
+        this.componentMaterials = res.list
+        this.allMaterials = [...this.rawMaterials, ...this.componentMaterials];
+      })
+    });
     this.addComponentMaterialForm = this.fb.group({
       name: ['', [Validators.required]],
       level: [0, [Validators.required]],

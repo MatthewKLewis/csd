@@ -4,7 +4,6 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { UserService } from './user.service';
 
 export interface Blueprint {
-  _id: Number,
   name: String,
   level: Number,
   recipe: Array<any>,

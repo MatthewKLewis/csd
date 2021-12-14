@@ -24,6 +24,7 @@ export class NetworkViewComponent implements OnInit {
   chooseFinalItem(evt:any) {
     this.chosenItemRawMats = [];
     this.chosenItem = evt.value;
+    console.log(this.chosenItem);
 
     for (let i = 0; i < this.chosenItem.blueprint.recipe.length; i++) { //for each component
       for (let j = 0; j < this.chosenItem.blueprint.recipe[i].count; j++) { //for each component count
