@@ -1,1 +1,31 @@
-<p>network-view works!</p>
+<div class="wrapper">
+    <mat-form-field appearance="fill">
+        <mat-select (selectionChange)="chooseFinalItem($event)">
+            <mat-option *ngFor="let finalItem of finalItems" [value]="finalItem">{{finalItem.name}}</mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <div *ngIf="chosenItem">
+        <p> {{chosenItem.name}} </p>
+        <p> {{chosenItem.level}} </p>
+        <p> {{chosenItem.description || 'no desc.'}} </p>
+        <p> Number of Raw Materials: {{chosenItemRawMats.length}} </p>
+        <hr>
+        <div>
+            <p>{{chosenItem.blueprint.name}}</p>
+            <div *ngFor="let component of chosenItem.blueprint.recipe">
+                <div>
+                    <div class="col-1" *ngFor="let in of counter(component.count)">
+                        <p>{{component.name}}</p>
+                        <div *ngFor="let rawIngred of component.blueprint.recipe">
+                            <div class="col-2" *ngFor="let in of counter(rawIngred.count)">
+                                <span>{{rawIngred.name}}</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
