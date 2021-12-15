@@ -67,6 +67,13 @@ export class ProductionService {
     });
     return this.http.get(`http://localhost:4100/production/allFinal/${this.userService.user.id}`, {headers: headers})
   }
+  getAllItemsMadeFrom(matId:number) {
+    let headers = new HttpHeaders({
+      'Authorization': `Bearer ${this.userService.authToken}`,
+      'Content-Type': 'application/json'
+    });
+    return this.http.get(`http://localhost:4100/production/allMadeFrom/${matId}`, {headers: headers})
+  }
 
   //ADD
   addRawMaterial(rawMaterial: RawMaterial): Observable<any> {

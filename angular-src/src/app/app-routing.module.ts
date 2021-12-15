@@ -9,6 +9,7 @@ import { AuthGuard } from './guards/auth.guard'
 import { ComponentMaterialsComponent } from './component-materials/component-materials.component';
 import { FinalItemsComponent } from './final-items/final-items.component';
 import { NetworkViewComponent } from './network-view/network-view.component';
+import { ReverseNetworkViewComponent } from './reverse-network-view/reverse-network-view.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -18,6 +19,7 @@ const routes: Routes = [
   {path: 'component-materials', component: ComponentMaterialsComponent},
   {path: 'final-items', component: FinalItemsComponent},
   {path: 'network-view', component: NetworkViewComponent},
+  {path: 'reverse-network-view', component: ReverseNetworkViewComponent},
 
 ];
 

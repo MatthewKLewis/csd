@@ -7,6 +7,7 @@
     <button *ngIf="!userService.checkExpired()" [routerLink]="['component-materials']">component materials </button>
     <button *ngIf="!userService.checkExpired()" [routerLink]="['final-items']"> items </button>
     <button *ngIf="!userService.checkExpired()" [routerLink]="['network-view']">network view </button>
+    <button *ngIf="!userService.checkExpired()" [routerLink]="['reverse-network-view']">r-network view </button>
 
     
     <button *ngIf="userService.checkExpired()" class="float-right" [routerLink]="['login']">login </button>

@@ -28,6 +28,7 @@ import { AddComponentMaterialComponent } from './dialog-frame/add-component-mate
 import { ConfirmComponent } from './dialog-frame/confirm/confirm.component';
 import { AddFinalItemComponent } from './dialog-frame/add-final-item/add-final-item.component';
 import { NetworkNodeComponent } from './network-view/network-node/network-node.component';
+import { ReverseNetworkViewComponent } from './reverse-network-view/reverse-network-view.component';
 
 @NgModule({
   declarations: [
@@ -46,6 +47,7 @@ import { NetworkNodeComponent } from './network-view/network-node/network-node.c
     ConfirmComponent,
     AddFinalItemComponent,
     NetworkNodeComponent,
+    ReverseNetworkViewComponent,
   ],
   imports: [
     BrowserModule,
