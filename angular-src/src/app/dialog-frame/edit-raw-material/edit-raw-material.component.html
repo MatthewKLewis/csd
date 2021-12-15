@@ -1,0 +1,27 @@
+<div class="title">
+    <p>{{data.frame}}</p>
+    <p (click)="close()">❌</p>
+</div>
+<form class="form" [formGroup]="addRawMaterialForm">
+    <mat-form-field appearance="fill">
+        <mat-label>Name</mat-label>
+        <input matInput formControlName="name">
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+        <mat-label>Level</mat-label>
+        <mat-select formControlName="level">
+            <mat-option *ngFor="let level of levels" [value]="level">{{level}}</mat-option>
+        </mat-select>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+        <mat-label>Discipline</mat-label>
+        <mat-select formControlName="discipline">
+            <mat-option *ngFor="let disc of disciplines" [value]="disc">{{disc}}</mat-option>
+        </mat-select>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+        <mat-label>Description</mat-label>
+        <input matInput formControlName="description">
+    </mat-form-field>
+    <button (click)="submitForm()">Submit</button>
+</form>

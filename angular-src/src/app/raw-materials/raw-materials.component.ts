@@ -45,7 +45,7 @@ export class RawMaterialsComponent implements OnInit {
   }
 
   edit(rawMaterial: any) {
-    this.openDialogAndCallback('edit-raw-material', { data: rawMaterial }, (returnData: any) => {
+    this.openDialogAndCallback('edit-raw-material', rawMaterial, (returnData: any) => {
       this.productionService.editRawMaterial(returnData).subscribe((res: any) => {
         location.reload()
       })
