@@ -6,19 +6,11 @@
     </mat-form-field>
 
     <div *ngIf="chosenItem">
-        <p> {{chosenItem.name}} </p>
-        <p> {{chosenItem.description || 'no desc.'}} </p>
-        <p> lvl. {{chosenItem.level}} </p>
-        <hr>
         <div>
-            <div *ngFor="let ingred of chosenItem.blueprint.recipe">
-                <div *ngFor="let iteration of repeater(ingred)">
-                    <div *ngIf="iteration.type == 'raw'">RAW</div>
-                    <div *ngIf="iteration.type == 'component'">
-                        <article>INSERT RECURSIVE ANGULAR COMPONENT HERE!</article>
-                    </div>
-                </div>
-            </div>
-        </div>
+            <p> {{chosenItem.name}} </p>
+            <p> {{chosenItem.description || 'no desc.'}} </p>
+            <p> lvl. {{chosenItem.level}} </p>
+        </div>        
+        <app-network-node [level]="1" [chosenMaterial]="chosenItem"></app-network-node>
     </div>
 </div>
