@@ -9,7 +9,15 @@
     </mat-form-field>
     <mat-form-field appearance="outline">
         <mat-label>Level</mat-label>
-        <input type="number" matInput formControlName="level">
+        <mat-select formControlName="level">
+            <mat-option *ngFor="let level of levels" [value]="level">{{level}}</mat-option>
+        </mat-select>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+        <mat-label>Discipline</mat-label>
+        <mat-select formControlName="discipline">
+            <mat-option *ngFor="let disc of disciplines" [value]="disc">{{disc}}</mat-option>
+        </mat-select>
     </mat-form-field>
     <mat-form-field appearance="fill">
         <mat-label>Description</mat-label>
