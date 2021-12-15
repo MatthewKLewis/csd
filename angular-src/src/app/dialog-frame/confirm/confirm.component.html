@@ -1,6 +1,8 @@
-<div class="title">
-    <p (click)="close()">❌</p>
+<div class="wrapper">
+    <form class="form" [formGroup]="addRawMaterialForm">
+        <button (click)="submitForm()">Confirm</button>
+    </form>
+    <div class="title">
+        <p (click)="close()">❌</p>
+    </div>
 </div>
-<form class="form" [formGroup]="addRawMaterialForm">
-    <button (click)="submitForm()">Sure?</button>
-</form>
