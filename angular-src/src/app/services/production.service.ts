@@ -14,6 +14,7 @@ export interface RawMaterial {
   _id: number,
   name: string,
   level: number,
+  discipline: String,
   description?: string
 }
 export interface ComponentMaterial {
@@ -21,6 +22,7 @@ export interface ComponentMaterial {
   name: string,
   level?: number,
   blueprint: Blueprint,
+  discipline: String,
   description?: string
 }
 export interface FinalItem {
@@ -28,6 +30,7 @@ export interface FinalItem {
   name: string,
   level?: number,
   blueprint: Blueprint,
+  discipline: String,
   description?: string
 }
 

@@ -1,4 +1,5 @@
 <div class="wrapper">
+    <h2>.choose an item</h2>
     <mat-form-field appearance="fill">
         <mat-select (selectionChange)="chooseFinalItem($event)">
             <mat-option *ngFor="let finalItem of finalItems" [value]="finalItem">{{finalItem.name}}</mat-option>
@@ -6,11 +7,25 @@
     </mat-form-field>
 
     <div *ngIf="chosenItem">
-        <div>
+        
+        <h2>.stats</h2>
+        <div class="stat-box">
             <p> {{chosenItem.name}} </p>
+            <p> {{chosenItem.discipline || 'no disc.'}} </p>
             <p> {{chosenItem.description || 'no desc.'}} </p>
             <p> lvl. {{chosenItem.level}} </p>
-        </div>        
+        </div>
+        
+        <h2>.ingredients</h2>
+        <div class="stat-box ingredients-map">
+            <div class="map-row" *ngFor="let ingred of rawComponentsOfFinalItem | keyvalue">
+                <span>{{ingred.key}}</span>
+                <span>{{ingred.value}}</span>
+            </div>
+        </div>
+        
+        <h2>.crafting map</h2>
         <app-network-node [level]="1" [chosenMaterial]="chosenItem"></app-network-node>
+
     </div>
 </div>

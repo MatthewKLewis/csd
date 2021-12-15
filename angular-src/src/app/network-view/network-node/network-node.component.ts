@@ -10,7 +10,6 @@ import { Component, Input, OnInit } from '@angular/core';
   
               <div class="raw" *ngIf="iteration.type == 'raw'">
                 <p>{{ingred.name}}</p>
-                <p>lvl. {{ingred.level}}</p>
               </div>
   
               <div class="indent" *ngIf="iteration.type == 'component'">
@@ -32,7 +31,9 @@ export class NetworkNodeComponent implements OnInit {
   constructor() {
   }
 
-  ngOnInit(): void {  }
+  ngOnInit(): void {  
+    //console.log(this.chosenMaterial);
+  }
 
   repeater(ingred: any) {
     let retArray: any[] = []

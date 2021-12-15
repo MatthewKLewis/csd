@@ -7,3 +7,23 @@ hr {
 .wrapper {
     width: 100%;
 }
+
+mat-form-field {
+    width: 100%;
+}
+
+.stat-box {
+    margin: 5px 5px 50px 5px;
+    padding: 5px;
+    border: 1px solid #e0e0e0;
+}
+
+.ingredients-map {
+    display: flex;
+    flex-direction: column;
+}
+
+.map-row {
+    display: grid;
+    grid-template-columns: 30% 30%;
+}

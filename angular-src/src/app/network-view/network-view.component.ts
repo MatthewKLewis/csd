@@ -10,6 +10,7 @@ export class NetworkViewComponent implements OnInit {
 
   finalItems: Array<FinalItem> = [];
   chosenItem!: FinalItem;
+  rawComponentsOfFinalItem: Map<any,any> = new Map()
 
   nodeTier: number = 0;
 
@@ -24,6 +25,9 @@ export class NetworkViewComponent implements OnInit {
 
   chooseFinalItem(evt:any) {
     this.chosenItem = evt.value;
+    this.rawComponentsOfFinalItem = new Map();
+    this.populateRawComponentArray(this.chosenItem);
+    console.log(this.rawComponentsOfFinalItem)
   }
 
   repeater(ingred: any) {
@@ -32,6 +36,19 @@ export class NetworkViewComponent implements OnInit {
       retArray.push(ingred);
     }
     return retArray
+  }
+
+  populateRawComponentArray(item: any) {
+    if (item.type == 'raw') {
+      this.rawComponentsOfFinalItem.set(item.name, this.rawComponentsOfFinalItem.get(item.name) + 1 || 1);        
+    } 
+    else {
+      for (let i = 0; i < item.blueprint.recipe.length; i++) {
+        for (let j = 0; j < item.blueprint.recipe[i].count; j++) {
+          this.populateRawComponentArray(item.blueprint.recipe[i]);
+        }
+      }
+    }
   }
 
 }
