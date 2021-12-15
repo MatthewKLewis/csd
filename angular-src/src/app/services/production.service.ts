@@ -107,4 +107,18 @@ export class ProductionService {
     });
     return this.http.delete(`http://localhost:4100/production/deleteRawMaterial/${rawMaterialId}`, {headers: headers})
   }
+  deleteComponentMaterial(componentMaterialId: number): Observable<any> {
+    let headers = new HttpHeaders({
+      'Authorization': `Bearer ${this.userService.authToken}`,
+      'Content-Type': 'application/json'
+    });
+    return this.http.delete(`http://localhost:4100/production/deleteComponentMaterial/${componentMaterialId}`, {headers: headers})
+  }
+  deleteFinalItem(finalItemId: number): Observable<any> {
+    let headers = new HttpHeaders({
+      'Authorization': `Bearer ${this.userService.authToken}`,
+      'Content-Type': 'application/json'
+    });
+    return this.http.delete(`http://localhost:4100/production/deleteFinalItem/${finalItemId}`, {headers: headers})
+  }
 }

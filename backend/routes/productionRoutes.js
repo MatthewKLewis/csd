@@ -109,5 +109,21 @@ router.delete('/deleteRawMaterial/:id', passport.authenticate('jwt', { session: 
         res.json({ success: false, msg: err })
     })
 })
+router.delete('/deleteComponentMaterial/:id', passport.authenticate('jwt', { session: false }), (req, res, next) => {
+    //console.log(req.params);
+    ComponentItem.findOneAndDelete({ _id: req.params.id }).then((rawMaterial) => {
+        res.json({ success: true, id: rawMaterial._id })
+    }).catch((err) => {
+        res.json({ success: false, msg: err })
+    })
+})
+router.delete('/deleteFinalItem/:id', passport.authenticate('jwt', { session: false }), (req, res, next) => {
+    //console.log(req.params);
+    FinalItem.findOneAndDelete({ _id: req.params.id }).then((rawMaterial) => {
+        res.json({ success: true, id: rawMaterial._id })
+    }).catch((err) => {
+        res.json({ success: false, msg: err })
+    })
+})
 
 module.exports = router;

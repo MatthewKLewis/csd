@@ -21,25 +21,43 @@ export class ComponentMaterialsComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  addComponentMaterial() {
+  openDialogAndCallback(frame: string, data: any, callback: Function | null) {
     const dialogRef = this.dialog.open(DialogFrameComponent, {
       width: '50%',
       disableClose: true,
-      data: {frame: 'add-component-material'},
+      data: { frame: frame, data: data },
     });
-    dialogRef.afterClosed().subscribe((res:any) => {
-      if (res) {
-        //console.log(res);
-        this.productionService.addComponentMaterial(res).subscribe((res:any)=>{
-          location.reload();
-        })
+    dialogRef.afterClosed().subscribe((data: any) => {
+      if (data && callback) {
+        callback(data);
       } else {
-        console.log('The dialog was closed with no data returned.');
+        console.log('no data returned from dialog.')
       }
     });
   }
 
-  edit(any:any) {}
+  //add-raw-material
+  addComponentMaterial() {
+    this.openDialogAndCallback('add-component-material', {}, (returnData: any) => {
+      this.productionService.addComponentMaterial(returnData).subscribe((res: any) => {
+        location.reload()
+      })
+    });
+  }
 
-  delete(any:any) {}
+  edit(rawMaterial: any) {
+    this.openDialogAndCallback('edit-raw-material', { data: rawMaterial }, (returnData: any) => {
+      this.productionService.editRawMaterial(returnData).subscribe((res: any) => {
+        location.reload()
+      })
+    });
+  }
+
+  delete(id: number) {
+    this.openDialogAndCallback('confirm', {}, (returnData: any) => {
+      this.productionService.deleteComponentMaterial(id).subscribe((res: any) => {
+        location.reload()
+      })
+    });
+  }
 }
