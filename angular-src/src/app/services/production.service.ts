@@ -72,7 +72,7 @@ export class ProductionService {
       'Authorization': `Bearer ${this.userService.authToken}`,
       'Content-Type': 'application/json'
     });
-    return this.http.get(`http://localhost:4100/production/allMadeFrom/${matId}`, {headers: headers})
+    return this.http.post(`http://localhost:4100/production/allMadeFrom/`, {matId: matId, owner: this.userService.user.id}, {headers: headers})
   }
 
   //ADD

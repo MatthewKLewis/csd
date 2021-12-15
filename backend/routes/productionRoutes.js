@@ -85,6 +85,20 @@ router.get('/allFinal/:id', passport.authenticate('jwt', { session: false }), (r
         res.json({ success: false, msg: err })
     })
 })
+router.post('/allMadeFrom', passport.authenticate('jwt', { session: false }), (req, res, next) => {
+    //console.log(req.body);
+    FinalItem.find({ owner: req.body.owner }).then((finalItems) => {
+        let retArray = [];
+        for (let i = 0; i < finalItems.length; i++) {
+            for (let j = 0; j < finalItems[i].blueprint.recipe.length; j++) {
+                console.log(finalItems[i].blueprint.recipe[j])                
+            }          
+        }
+        res.json({ success: true, list: retArray })
+    }).catch((err) => {
+        //res.json({ success: false, msg: err })
+    })
+})
 
 //UPDATE
 router.post('/editRawMaterial', passport.authenticate('jwt', { session: false }), (req, res, next) => {
