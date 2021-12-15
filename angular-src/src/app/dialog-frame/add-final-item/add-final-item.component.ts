@@ -13,7 +13,8 @@ export class AddFinalItemComponent implements OnInit {
 
   @Input() public data: any
 
-  numbers = [1,2,3,4,5,6,7,8,9,10]
+  numbers = [1,2,3,4,5,6,7,8,9,10];
+  disciplines: Array<string> = ['Technology',];
   rawMaterials!: Array<RawMaterial>;
   componentMaterials!: Array<ComponentMaterial>;
 
@@ -36,7 +37,8 @@ export class AddFinalItemComponent implements OnInit {
     this.productionService.getComponentMaterials().subscribe((res:any)=>{ this.componentMaterials = res.list })
     this.addFinalItemForm = this.fb.group({
       name: ['', [Validators.required]],
-      level: [0, [Validators.required]],
+      level: 0,
+      discipline: ['',],
       description: ['',],
       blueprint: [this.blueprint, [Validators.required]]
     });
@@ -61,6 +63,9 @@ export class AddFinalItemComponent implements OnInit {
   }
 
   changeIngredientName(i: number, event: any) {
+    if (event.option.value.level > this.addFinalItemForm.value.level) {
+      this.addFinalItemForm.value.level = event.option.value.level
+    }
     this.blueprint.recipe[i] = event.option.value;
   }
 

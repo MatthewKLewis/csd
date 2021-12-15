@@ -13,7 +13,9 @@ export class AddComponentMaterialComponent implements OnInit {
 
   @Input() public data: any
 
-  numbers = [1,2,3,4,5,6,7,8,9,10]
+  numbers = [1,2,3,4,5,6,7,8,9,10];
+  disciplines: Array<string> = ['Mining', 'Mushroom Gathering', 'Scrapping', 'Spidersilk Gathering']
+
   rawMaterials!: Array<RawMaterial>;
   componentMaterials!: Array<ComponentMaterial>;
   allMaterials!: Array<RawMaterial | ComponentMaterial>;
@@ -42,8 +44,8 @@ export class AddComponentMaterialComponent implements OnInit {
     });
     this.addComponentMaterialForm = this.fb.group({
       name: ['', [Validators.required]],
-      level: [0, [Validators.required]],
       description: ['',],
+      level: [0],
       blueprint: [this.blueprint, [Validators.required]]
     });
   }
@@ -67,6 +69,9 @@ export class AddComponentMaterialComponent implements OnInit {
   }
 
   changeIngredientName(i: number, event: any) {
+    if (event.option.value.level > this.addComponentMaterialForm.value.level) {
+      this.addComponentMaterialForm.value.level = event.option.value.level
+    }
     this.blueprint.recipe[i] = event.option.value;
   }
 
