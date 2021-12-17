@@ -39,7 +39,8 @@ export class EditRawMaterialComponent implements AfterViewInit {
   }
 
   submitForm() {
-      this.dialogRef.close(this.addRawMaterialForm.value);
+    this.addRawMaterialForm.value._id = this.data.data._id;
+    this.dialogRef.close(this.addRawMaterialForm.value);
   }
 
   close() {

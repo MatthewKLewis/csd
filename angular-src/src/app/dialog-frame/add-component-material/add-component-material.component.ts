@@ -71,8 +71,9 @@ export class AddComponentMaterialComponent implements OnInit {
   changeIngredientName(i: number, event: any) {
     if (event.option.value.level > this.addComponentMaterialForm.value.level) {
       this.addComponentMaterialForm.value.level = event.option.value.level
+      this.blueprint.level = event.option.value.level;
     }
-    this.blueprint.recipe[i] = event.option.value;
+    this.blueprint.recipe[i] = { _id: event.option.value._id };
   }
 
   changeIngredientCount(i: number, event: any) {

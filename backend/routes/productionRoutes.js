@@ -103,14 +103,15 @@ router.post('/allMadeFrom', passport.authenticate('jwt', { session: false }), (r
 //UPDATE
 router.post('/editRawMaterial', passport.authenticate('jwt', { session: false }), (req, res, next) => {
     //console.log(req.body);
-    RawMaterial.findOne({ id: req.body.id, owner: req.params.id }).then((rawMaterial) => {
-        rawMaterial.name = req.body.name;
-        rawMaterial.level = req.body.level;
-        rawMaterial.save().then((res) => {
-            res.json({ success: true, mat: rawMaterial })
-        })
+    RawMaterial.findOne({ _id: req.body.mat._id }).then((rawMaterial) => {
+        rawMaterial.name = req.body.mat.name;
+        rawMaterial.level = req.body.mat.level;
+        rawMaterial.description = req.body.mat.description;
+        rawMaterial.discipline = req.body.mat.discipline;
+        rawMaterial.save()
+        res.json({success: true, mat: rawMaterial})
     }).catch((err) => {
-        res.json({ success: false, msg: err })
+        err.json({ success: false, msg: err })
     })
 })
 

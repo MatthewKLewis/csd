@@ -3,6 +3,15 @@ const bcrypt = require("bcryptjs");
 
 const Schema = mongoose.Schema;
 
+const blueprintSchema = new Schema({
+  name: String,
+  level: Number,
+  recipe: [{
+    _id: Schema.Types.ObjectId,
+    count: Number,
+  }]
+});
+
 const componentItemSchema = new Schema({
   createdOn: Date,
   name: String,
@@ -10,7 +19,7 @@ const componentItemSchema = new Schema({
   level: Number,
   type: String,
   discipline: String,
-  blueprint: Schema.Types.Mixed,
+  blueprint: blueprintSchema,
   owner: { type: Schema.Types.ObjectId, ref: "User" },
 });
 

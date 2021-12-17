@@ -39,7 +39,7 @@ export class RawMaterialsComponent implements OnInit {
   addRawMaterial() {
     this.openDialogAndCallback('add-raw-material', {}, (returnData: any) => {
       this.productionService.addRawMaterial(returnData).subscribe((res: any) => {
-        location.reload()
+        //location.reload()
       })
     });
   }
@@ -47,7 +47,7 @@ export class RawMaterialsComponent implements OnInit {
   edit(rawMaterial: any) {
     this.openDialogAndCallback('edit-raw-material', rawMaterial, (returnData: any) => {
       this.productionService.editRawMaterial(returnData).subscribe((res: any) => {
-        location.reload()
+        //location.reload()
       })
     });
   }
@@ -55,7 +55,7 @@ export class RawMaterialsComponent implements OnInit {
   delete(id: number) {
     this.openDialogAndCallback('confirm', {}, (returnData: any) => {
       this.productionService.deleteRawMaterial(id).subscribe((res: any) => {
-        location.reload()
+        //location.reload()
       })
     });
   }

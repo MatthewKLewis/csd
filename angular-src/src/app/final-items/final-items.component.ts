@@ -39,7 +39,7 @@ export class FinalItemsComponent implements OnInit {
   addFinalItem() {
     this.openDialogAndCallback('add-final-item', {}, (returnData: any) => {
       this.productionService.addFinalItem(returnData).subscribe((res: any) => {
-        location.reload()
+        //location.reload()
       })
     });
   }
@@ -47,7 +47,7 @@ export class FinalItemsComponent implements OnInit {
   edit(rawMaterial: any) {
     this.openDialogAndCallback('edit-raw-material', { data: rawMaterial }, (returnData: any) => {
       this.productionService.editRawMaterial(returnData).subscribe((res: any) => {
-        location.reload()
+        //location.reload()
       })
     });
   }
@@ -55,7 +55,7 @@ export class FinalItemsComponent implements OnInit {
   delete(id: number) {
     this.openDialogAndCallback('confirm', {}, (returnData: any) => {
       this.productionService.deleteFinalItem(id).subscribe((res: any) => {
-        location.reload()
+        //location.reload()
       })
     });
   }

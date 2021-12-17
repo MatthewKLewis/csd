@@ -40,7 +40,7 @@ export class ComponentMaterialsComponent implements OnInit {
   addComponentMaterial() {
     this.openDialogAndCallback('add-component-material', {}, (returnData: any) => {
       this.productionService.addComponentMaterial(returnData).subscribe((res: any) => {
-        location.reload()
+        //location.reload()
       })
     });
   }
@@ -48,7 +48,7 @@ export class ComponentMaterialsComponent implements OnInit {
   edit(rawMaterial: any) {
     this.openDialogAndCallback('edit-raw-material', { data: rawMaterial }, (returnData: any) => {
       this.productionService.editRawMaterial(returnData).subscribe((res: any) => {
-        location.reload()
+        //location.reload()
       })
     });
   }
@@ -56,7 +56,7 @@ export class ComponentMaterialsComponent implements OnInit {
   delete(id: number) {
     this.openDialogAndCallback('confirm', {}, (returnData: any) => {
       this.productionService.deleteComponentMaterial(id).subscribe((res: any) => {
-        location.reload()
+        //location.reload()
       })
     });
   }
